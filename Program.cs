@@ -54,7 +54,7 @@ namespace FounnBot
         private void ConnectToDatabase()
         {
             Database.Context = new FounnBotContext(this.Config.ConnectionString);
-            LogMessageToConsole("Connected to founnbot@server.founntain.de database");
+            LogMessageToConsole("Connected to founnbot@vserver.founntain.de database");
         }
 
         private void LoadConfig(){

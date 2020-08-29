@@ -22,9 +22,17 @@ namespace FounnBot.Commands{
 
             var place = 1;
 
-            userFromGuild.ForEach(x => {
-                output += $"{place}) {this.Guild.GetUser(x.UserId).Username} | Level {x.Level} | TotalXP {x.TotalXp}\n";
+            foreach(var userEntity in userFromGuild){
+                var user = this.Guild.GetUser(userEntity.UserId);
+
+                if(user == null) continue;
+
+                output += $"{place}) {user.Username} | Level {userEntity.Level} | TotalXP {userEntity.TotalXp}\n";
                 place++;
+            }
+
+            userFromGuild.ForEach(x => {
+                
             });
 
             output += "```";
