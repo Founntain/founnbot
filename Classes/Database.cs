@@ -11,7 +11,7 @@ namespace FounnBot.Classes{
         public static FounnBotContext Context {get; set;}
 
         public static ICollection<Prefix> GetGuildsFromDatabase(){
-            return Context.Guilds.ToList().Select(x => new Prefix{
+            return Context.Guilds.ToList().Select(x => new Prefix {
                 Guild = x.GuildId,
                 GuildPrefix = x.Prefix
             }).ToArray();
@@ -40,6 +40,13 @@ namespace FounnBot.Classes{
             }
 
             guildOnDb.Prefix = prefix;
+
+            var image = System.IO.File.ReadAllBytes("path");
+            var base64 = Convert.ToBase64String(image);
+
+            image = Convert.FromBase64String(base64);
+
+            System.IO.File.WriteAllBytes("path", image);
 
             Context.SaveChanges();
 
